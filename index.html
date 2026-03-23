@@ -175,7 +175,8 @@
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 2s ease-out 3s both;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 2s both;
         }
 
         .hero-cta::before {
@@ -830,12 +831,17 @@
             }
         }
 
-        // Start typewriter after page loads
         window.addEventListener('load', () => {
+            const textLength = "starting of the AI career milestone".length;
+            const typewriterDuration = textLength * 100 + 1000;
+            
+            setTimeout(() => {
+                document.querySelector('.hero-cta').style.animation = 'fadeInUp 2s ease-out forwards';
+            }, typewriterDuration);
+    
             setTimeout(typeWriter, 1000);
         });
-
-        // Smooth scroll for Get Started button
+        
         document.querySelector('.hero-cta').addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
